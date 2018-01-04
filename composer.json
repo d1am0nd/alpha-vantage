@@ -1,0 +1,26 @@
+{
+    "name": "d1am0nd/alpha-vantage",
+    "type": "library",
+    "description": "Simplified Laravel Alpha Vantage API client",
+    "license": "MIT",
+    "keywords": [
+        "api",
+        "alpha-vantage",
+        "alphavantage"
+    ],
+    "autoload": {
+        "psr-4": {
+            "AlphaVantage\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "php": "^7.0",
+        "guzzlehttp/guzzle": "^6.3",
+        "phpunit/phpunit": "^6.5"
+    }
+}
