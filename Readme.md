@@ -4,8 +4,6 @@ This is a Laravel package for simplified fetching of finance data from Alpha Van
 
 ## Demo
 
-**Getting currency exchange rate**
-
 **Getting historical data**
 
 ```php
@@ -57,7 +55,7 @@ Documented - https://www.alphavantage.co/documentation/#currency-exchange
 * `weeklyAdjusted($symbol)` - https://www.alphavantage.co/documentation/#weeklyadj
 * `monthly($symbol)` - https://www.alphavantage.co/documentation/#monthly
 * `monthlyAdjusted($symbol)` - https://www.alphavantage.co/documentation/#monthlyadj
-* `batchStockQuotes($symbol)` - https://www.alphavantage.co/documentation/#batchquotes
+* `batchStockQuotes(array $symbols)` - https://www.alphavantage.co/documentation/#batchquotes
 
 
 ### Foreign Exchange
@@ -110,10 +108,6 @@ Documented - https://www.alphavantage.co/documentation/#sector-information
 
 #### Methods available
 * `sectors()` - https://www.alphavantage.co/documentation/#sector
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## License
 
