@@ -1,0 +1,120 @@
+# Simplified Laravel Alpha Vantage API client
+
+This is a Laravel package for simplified fetching of finance data from Alpha Vantage API. It's an abstraction layer over Guzzle that aims to remove complexity in connecting it to Alpha Vantage API.
+
+## Demo
+
+**Getting currency exchange rate**
+
+**Getting historical data**
+
+```php
+  // Daily historical data for Bitcoin to USD
+  $res = \AlphaVantage\Api::digitalCurrency()->daily('BTC', 'USD');
+  /* Returns
+  [
+      "Meta Data": [
+          "1. Information": "Daily Prices and Volumes for Digital Currency", ...
+      ],
+      "Time Series (Digital Currency Daily)": [
+          "2018-01-03": [
+              "1a. open (USD)": "14782.09572045", ...
+          ],
+          "2018-01-02": [
+              "1a. open (USD)": "13514.39967186", ...
+          ], ...
+      ],
+  ]
+  */
+```
+
+
+## Installation
+
+1. Run composer `composer require d1am0nd/alpha-vantage`
+2. Add your Alpha Vantage API key to .env as `AV_KEY={your key}`
+
+## Usage
+
+### Stock Time Series
+Documented - https://www.alphavantage.co/documentation/#currency-exchange
+
+#### Example - Microsoft's historical monthly stock data
+```php
+  use \AlphaVantage\Api;
+  // ...
+  public function monthlyData()
+  {
+    return Api::stock()->monthly('MSFT');
+  }
+```
+
+#### Methods available
+* `intraday($symbol)` - https://www.alphavantage.co/documentation/#intraday
+* `daily($symbol)` - https://www.alphavantage.co/documentation/#daily
+* `dailyAdjusted($symbol)` - https://www.alphavantage.co/documentation/#dailyadj
+* `weekly($symbol)` - https://www.alphavantage.co/documentation/#weekly
+* `weeklyAdjusted($symbol)` - https://www.alphavantage.co/documentation/#weeklyadj
+* `monthly($symbol)` - https://www.alphavantage.co/documentation/#monthly
+* `monthlyAdjusted($symbol)` - https://www.alphavantage.co/documentation/#monthlyadj
+* `batchStockQuotes($symbol)` - https://www.alphavantage.co/documentation/#batchquotes
+
+
+### Foreign Exchange
+Documented - https://www.alphavantage.co/documentation/#currency-exchange
+
+#### Example - Euro to US Dollar
+```php
+  use \AlphaVantage\Api;
+  // ...
+  public function currencyExchangeRate()
+  {
+    return Api::currency()->currencyExchangeRate('EUR', 'USD');
+  }
+```
+
+#### Methods available
+* `currencyExchangeRate($from, $to)` - https://www.alphavantage.co/documentation/#currency-exchange
+
+### Digital & Crypto Currencies
+Documented - https://www.alphavantage.co/documentation/#digital-currency
+
+#### Example - Bitcoin historical monthly stock data
+```php
+  use \AlphaVantage\Api;
+  // ...
+  public function monthlyData()
+  {
+    return Api::digitalCurrency()->monthly('BTC', 'USD');
+  }
+```
+
+#### Methods available
+* `intraday($symbol, $market)` - https://www.alphavantage.co/documentation/#currency-intraday
+* `daily($symbol, $market)` - https://www.alphavantage.co/documentation/#currency-daily
+* `weekly($symbol, $market)` - https://www.alphavantage.co/documentation/#currency-weekly
+* `monthly($symbol, $market)` - https://www.alphavantage.co/documentation/#currency-monthly
+
+### Sector Performances
+Documented - https://www.alphavantage.co/documentation/#sector-information
+
+#### Example - Sector peformances
+```php
+  use \AlphaVantage\Api;
+  // ...
+  public function monthlyData()
+  {
+    return Api::sector()->sectors();
+  }
+```
+
+#### Methods available
+* `sectors()` - https://www.alphavantage.co/documentation/#sector
+
+## Versioning
+
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

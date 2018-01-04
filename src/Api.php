@@ -39,6 +39,7 @@ class Api
 
     private static function make($api)
     {
+        dd($api);
         return new $api(new Client([
             'base_uri' => 'https://www.alphavantage.co/query',
         ]), env('AV_KEY'));
