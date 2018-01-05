@@ -2,30 +2,37 @@
 
 This is a Laravel package for simplified fetching of finance data from Alpha Vantage API. It's an abstraction layer over Guzzle that aims to remove complexity in connecting it to Alpha Vantage API.
 
+### Docs
+
+* [Demo](#demo)
+* [Laravel compatibility](#laravel-compatibility)
+* [Installation](#installation)
+* [Usage](#usage)
+* [Licence](#licence)
+
 ## Demo
 
 **Getting historical data**
 
 ```php
-  // Daily historical data for Bitcoin to USD
-  $res = \AlphaVantage\Api::digitalCurrency()->daily('BTC', 'USD');
-  /* Returns
-  [
-      "Meta Data": [
-          "1. Information": "Daily Prices and Volumes for Digital Currency", ...
-      ],
-      "Time Series (Digital Currency Daily)": [
-          "2018-01-03": [
-              "1a. open (USD)": "14782.09572045", ...
-          ],
-          "2018-01-02": [
-              "1a. open (USD)": "13514.39967186", ...
-          ], ...
-      ],
-  ]
-  */
+// Daily historical data for Bitcoin to USD
+$res = \AlphaVantage\Api::digitalCurrency()->daily('BTC', 'USD');
+/* Returns
+[
+    "Meta Data": [
+        "1. Information": "Daily Prices and Volumes for Digital Currency", ...
+    ],
+    "Time Series (Digital Currency Daily)": [
+        "2018-01-03": [
+            "1a. open (USD)": "14782.09572045", ...
+        ],
+        "2018-01-02": [
+            "1a. open (USD)": "13514.39967186", ...
+        ], ...
+    ],
+]
+*/
 ```
-
 
 ## Installation
 
@@ -34,17 +41,28 @@ This is a Laravel package for simplified fetching of finance data from Alpha Van
 
 ## Usage
 
+API calls are grouped into 5 different groups:
+* `Api::stock()` - Stock Time Series
+* `Api::currency()` - Foreign Exchange
+* `Api::digitalCurrency()` - Digital & Crypto Currencies
+* `Api::sector()` - Sector Performances
+* `Api::general()` - Technical Indicators & Other
+
+Each function described below is called from their respective group as shown in examples.
+
+Functions described below also take an additional parameter `array $params = []`, which can be used to pass any optional parameters if needed.
+
 ### Stock Time Series
 Documented - https://www.alphavantage.co/documentation/#currency-exchange
 
 #### Example - Microsoft's historical monthly stock data
 ```php
-  use \AlphaVantage\Api;
-  // ...
-  public function monthlyData()
-  {
+use AlphaVantage\Api;
+// ...
+public function monthlyData()
+{
     return Api::stock()->monthly('MSFT');
-  }
+}
 ```
 
 #### Methods available
@@ -63,12 +81,12 @@ Documented - https://www.alphavantage.co/documentation/#currency-exchange
 
 #### Example - Euro to US Dollar
 ```php
-  use \AlphaVantage\Api;
-  // ...
-  public function currencyExchangeRate()
-  {
+use AlphaVantage\Api;
+// ...
+public function currencyExchangeRate()
+{
     return Api::currency()->currencyExchangeRate('EUR', 'USD');
-  }
+}
 ```
 
 #### Methods available
@@ -79,12 +97,12 @@ Documented - https://www.alphavantage.co/documentation/#digital-currency
 
 #### Example - Bitcoin historical monthly stock data
 ```php
-  use \AlphaVantage\Api;
-  // ...
-  public function monthlyData()
-  {
+use AlphaVantage\Api;
+// ...
+public function monthlyData()
+{
     return Api::digitalCurrency()->monthly('BTC', 'USD');
-  }
+}
 ```
 
 #### Methods available
@@ -98,16 +116,40 @@ Documented - https://www.alphavantage.co/documentation/#sector-information
 
 #### Example - Sector peformances
 ```php
-  use \AlphaVantage\Api;
-  // ...
-  public function monthlyData()
-  {
+use AlphaVantage\Api;
+// ...
+public function monthlyData()
+{
     return Api::sector()->sectors();
-  }
+}
+```
+#### Methods available
+* `sectors()` - https://www.alphavantage.co/documentation/#sector
+
+### Technical Indicators
+Documented - https://www.alphavantage.co/documentation/#technical-indicators
+
+Technical methods are not implemented as separate functions. There is a `Api::general()->query($funcName, array $params)` method which allows for custom queries.
+
+#### Example - MACDEXT
+This will query function 'MACDEXT' with additional parameters `symbol`, `interval` and `series_type` as described in the documentation https://www.alphavantage.co/documentation/#macdext
+
+```php
+use AlphaVantage\Api;
+// ...
+public function monthlyData()
+{
+    return Api::general()->query('MACDEXT', [
+        'symbol' => 'MSFT',
+        'interval' => '15min',
+        'series_type' => 'high',
+    ]);
+}
 ```
 
 #### Methods available
-* `sectors()` - https://www.alphavantage.co/documentation/#sector
+* `query($functionName, array $parameters)`
+
 
 ## License
 
