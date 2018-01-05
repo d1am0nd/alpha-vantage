@@ -5,7 +5,6 @@ This is a Laravel package for simplified fetching of finance data from Alpha Van
 ### Docs
 
 * [Demo](#demo)
-* [Laravel compatibility](#laravel-compatibility)
 * [Installation](#installation)
 * [Usage](#usage)
 * [Licence](#licence)
@@ -42,11 +41,11 @@ $res = \AlphaVantage\Api::digitalCurrency()->daily('BTC', 'USD');
 ## Usage
 
 API calls are grouped into 5 different groups:
-* `Api::stock()` - Stock Time Series
-* `Api::currency()` - Foreign Exchange
-* `Api::digitalCurrency()` - Digital & Crypto Currencies
-* `Api::sector()` - Sector Performances
-* `Api::general()` - Technical Indicators & Other
+* `Api::stock()` - [Stock Time Series](#stock-time-series)
+* `Api::currency()` - [Foreign Exchange](#foreign-exchange)
+* `Api::digitalCurrency()` - [Digital & Crypto Currencies](#digital--crypto-currencies)
+* `Api::sector()` - [Sector Performances](#sector-performances)
+* `Api::general()` - [Technical Indicators & Other](#technical-indicators--other)
 
 Each function described below is called from their respective group as shown in examples.
 
@@ -126,7 +125,7 @@ public function monthlyData()
 #### Methods available
 * `sectors()` - https://www.alphavantage.co/documentation/#sector
 
-### Technical Indicators
+### Technical Indicators & Other
 Documented - https://www.alphavantage.co/documentation/#technical-indicators
 
 Technical methods are not implemented as separate functions. There is a `Api::general()->query($funcName, array $params)` method which allows for custom queries.
