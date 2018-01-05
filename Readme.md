@@ -117,7 +117,7 @@ Documented - https://www.alphavantage.co/documentation/#sector-information
 ```php
 use AlphaVantage\Api;
 // ...
-public function monthlyData()
+public function sectorPerformances()
 {
     return Api::sector()->sectors();
 }
@@ -136,7 +136,7 @@ This will query function 'MACDEXT' with additional parameters `symbol`, `interva
 ```php
 use AlphaVantage\Api;
 // ...
-public function monthlyData()
+public function technicalIndicators()
 {
     return Api::general()->query('MACDEXT', [
         'symbol' => 'MSFT',
