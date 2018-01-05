@@ -7,7 +7,7 @@ This is a Laravel package for simplified fetching of finance data from Alpha Van
 * [Demo](#demo)
 * [Installation](#installation)
 * [Usage](#usage)
-* [Licence](#licence)
+* [Licence](#user-content-license)
 
 ## Demo
 
