@@ -22,7 +22,7 @@ class Api
         return self::make(DigitalCurrency::class);
     }
 
-    public static function sectro()
+    public static function sector()
     {
         return self::make(Sector::class);
     }
@@ -39,7 +39,6 @@ class Api
 
     private static function make($api)
     {
-        dd($api);
         return new $api(new Client([
             'base_uri' => 'https://www.alphavantage.co/query',
         ]), env('AV_KEY'));
