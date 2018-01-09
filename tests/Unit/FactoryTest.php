@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Integration;
+namespace Tests\Unit;
 
 use AlphaVantage\Mocks\ApiFactory;
 use AlphaVantage\Api\Stock;
@@ -16,18 +16,22 @@ class FactoryTest extends TestCase
     {
         $this->assertTrue(ApiFactory::currency() instanceof Currency);
     }
+
     public function testDigitalCurrencySuccess()
     {
         $this->assertTrue(ApiFactory::digitalCurrency() instanceof DigitalCurrency);
     }
+
     public function testSectorSuccess()
     {
         $this->assertTrue(ApiFactory::sector() instanceof Sector);
     }
+
     public function testStockSuccess()
     {
         $this->assertTrue(ApiFactory::stock() instanceof Stock);
     }
+
     public function testGeneralSuccess()
     {
         $this->assertTrue(ApiFactory::general() instanceof General);
