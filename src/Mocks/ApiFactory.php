@@ -1,40 +1,39 @@
 <?php
 
-namespace Av\Mocks;
+namespace AlphaVantage\Mocks;
 
-use AlphaVantage\Api\Stock;
-use AlphaVantage\Api\Sector;
-use AlphaVantage\Api\Currency;
-use AlphaVantage\Api\DigitalCurrency;
-use AlphaVantage\Mocks\Client;
+use AlphaVantage\Factory\Api;
 use PHPUnit\Framework\TestCase;
 
 class ApiFactory
 {
     public static function currency()
     {
-        return self::make(Currency::class);
+        return Api::currency(self::getKey());
     }
 
     public static function digitalCurrency()
     {
-        return self::make(DigitalCurrency::class);
+        return Api::digitalCurrency(self::getKey());
     }
 
-    public static function sectro()
+    public static function sector()
     {
-        return self::make(Sector::class);
+        return Api::sector(self::getKey());
     }
 
     public static function stock()
     {
-        return self::make(Stock::class);
+        return Api::stock(self::getKey());
     }
 
-    private static function make($api)
+    public static function general()
     {
-        return new $api(new Client([
-            'base_uri' => 'https://www.alphavantage.co/query',
-        ]), 123456789);
+        return Api::general(self::getKey());
+    }
+
+    protected static function getKey($key = null)
+    {
+        return $key ? $key : '123';
     }
 }

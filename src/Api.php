@@ -7,6 +7,7 @@ use AlphaVantage\Api\Sector;
 use AlphaVantage\Api\General;
 use AlphaVantage\Api\Currency;
 use AlphaVantage\Api\DigitalCurrency;
+use AlphaVantage\Api\Factory\Api as ApiFactory;
 use AlphaVantage\Guzzle\Client;
 use PHPUnit\Framework\TestCase;
 
@@ -14,33 +15,31 @@ class Api
 {
     public static function currency()
     {
-        return self::make(Currency::class);
+        return ApiFactory::currency(self::getKey());
     }
 
     public static function digitalCurrency()
     {
-        return self::make(DigitalCurrency::class);
+        return ApiFactory::digitalCurrency(self::getKey());
     }
 
     public static function sector()
     {
-        return self::make(Sector::class);
+        return ApiFactory::sector(self::getKey());
     }
 
     public static function stock()
     {
-        return self::make(Stock::class);
+        return ApiFactory::stock(self::getKey());
     }
 
     public static function general()
     {
-        return self::make(General::class);
+        return ApiFactory::general(self::getKey());
     }
 
-    private static function make($api)
+    protected static function getKey()
     {
-        return new $api(new Client([
-            'base_uri' => 'https://www.alphavantage.co/query',
-        ]), env('AV_KEY'));
+        return env('AV_KEY', null);
     }
 }
