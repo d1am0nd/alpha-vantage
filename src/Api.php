@@ -7,7 +7,7 @@ use AlphaVantage\Api\Sector;
 use AlphaVantage\Api\General;
 use AlphaVantage\Api\Currency;
 use AlphaVantage\Api\DigitalCurrency;
-use AlphaVantage\Api\Factory\Api as ApiFactory;
+use AlphaVantage\Factory\Api as ApiFactory;
 use AlphaVantage\Guzzle\Client;
 use PHPUnit\Framework\TestCase;
 
