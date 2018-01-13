@@ -2,7 +2,7 @@
 
 namespace AlphaVantage\Api;
 
-use AlphaVantage\API\Master;
+use AlphaVantage\Api\Master;
 use GuzzleHttp\Client;
 use AlphaVantage\Exception\BadMethodCallException;
 

@@ -2,7 +2,7 @@
 
 namespace AlphaVantage\Api;
 
-use AlphaVantage\API\Master;
+use AlphaVantage\Api\Master;
 
 class General extends Master {
     /**
