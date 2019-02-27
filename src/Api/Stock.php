@@ -34,6 +34,12 @@ class Stock extends Master {
     // https://www.alphavantage.co/documentation/#batchquotes
     const BATCH_STOCK_QUOTES = 'BATCH_STOCK_QUOTES';
 
+    // https://www.alphavantage.co/documentation/#batchquotes
+    const GLOBAL_QUOTE = 'GLOBAL_QUOTE';
+
+    // https://www.alphavantage.co/documentation/#symbolsearch
+    const SYMBOL_SEARCH = 'SYMBOL_SEARCH';
+
     private $availableFunctions = [
         self::TIME_SERIES_INTRADAY,
         self::TIME_SERIES_DAILY,
@@ -43,6 +49,8 @@ class Stock extends Master {
         self::TIME_SERIES_MONTHLY,
         self::TIME_SERIES_MONTHLY_ADJUSTED,
         self::BATCH_STOCK_QUOTES,
+        self::GLOBAL_QUOTE,
+        self::SYMBOL_SEARCH,
     ];
 
     /**
@@ -138,7 +146,7 @@ class Stock extends Master {
 
     /**
      * BATCH_STOCK_QUOTES
-     * @param  string $symbol Multiple stock symbols, explided by ','
+     * @param  string $symbol Multiple stock symbols, exploded by ','
      * @param  array  $params Additional API parameters
      * @return Object         Decoded API object
      */
@@ -146,6 +154,32 @@ class Stock extends Master {
     {
         return $this->query(self::BATCH_STOCK_QUOTES, array_merge($params, [
             'symbols' => $symbols,
+        ]));
+    }
+
+    /**
+     * GLOBAL_QUOTE
+     * @param  string $symbol Single stock symbol
+     * @param  array  $params Additional API parameters
+     * @return Object         Decoded API object
+     */
+    public function quote($symbol, $params = [])
+    {
+        return $this->query(self::GLOBAL_QUOTE, array_merge($params, [
+            'symbol' => $symbol,
+        ]));
+    }
+
+    /**
+     * SYMBOL_SEARCH
+     * @param  string $keywords A text string of your choice
+     * @param  array  $params   Additional API parameters
+     * @return Object           Decoded API object
+     */
+    public function search($keywords, $params = [])
+    {
+        return $this->query(self::SYMBOL_SEARCH, array_merge($params, [
+            'keywords' => $keywords,
         ]));
     }
 

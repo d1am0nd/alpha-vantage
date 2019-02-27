@@ -54,6 +54,11 @@ class StockTest extends ApiParent
         $this->assertContains('GOOG', $res['query']['symbols']);
     }
 
+    public function testquote()
+    {
+        $this->funcTest('quote', 'GLOBAL_QUOTE');
+    }
+
     private function funcTest($fn, $expected)
     {
         $exp = [
