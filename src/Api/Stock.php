@@ -34,7 +34,7 @@ class Stock extends Master {
     // https://www.alphavantage.co/documentation/#batchquotes
     const BATCH_STOCK_QUOTES = 'BATCH_STOCK_QUOTES';
 
-    // https://www.alphavantage.co/documentation/#batchquotes
+    // https://www.alphavantage.co/documentation/#latestprice
     const GLOBAL_QUOTE = 'GLOBAL_QUOTE';
 
     // https://www.alphavantage.co/documentation/#symbolsearch
