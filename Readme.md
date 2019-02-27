@@ -73,6 +73,8 @@ public function monthlyData()
 * `monthly($symbol)` - https://www.alphavantage.co/documentation/#monthly
 * `monthlyAdjusted($symbol)` - https://www.alphavantage.co/documentation/#monthlyadj
 * `batchStockQuotes(array $symbols)` - https://www.alphavantage.co/documentation/#batchquotes
+* `quote($symbol)` - https://www.alphavantage.co/documentation/#latestprice
+* `search($keywords)` - https://www.alphavantage.co/documentation/#symbolsearch
 
 
 ### Foreign Exchange
@@ -90,6 +92,10 @@ public function currencyExchangeRate()
 
 #### Methods available
 * `currencyExchangeRate($from, $to)` - https://www.alphavantage.co/documentation/#currency-exchange
+* `intraday($from, $to, $interval)` - https://www.alphavantage.co/documentation/#fx-intraday
+* `daily($from, $to)` - https://www.alphavantage.co/documentation/#fx-daily
+* `weekly($from, $to)` - https://www.alphavantage.co/documentation/#fx-weekly
+* `monthly($from, $to)` - https://www.alphavantage.co/documentation/#fx-monthly
 
 ### Digital & Crypto Currencies
 Documented - https://www.alphavantage.co/documentation/#digital-currency
