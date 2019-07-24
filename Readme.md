@@ -37,6 +37,14 @@ $res = \AlphaVantage\Api::digitalCurrency()->daily('BTC', 'USD');
 
 1. Run composer `composer require d1am0nd/alpha-vantage`
 2. Add your Alpha Vantage API key to .env as `AV_KEY={your key}`
+3. Create a config file `alphavantage.php` with the following:
+```
+<?php
+
+return [
+    'key' => env('AV_KEY')
+];
+```
 
 ## Usage
 
